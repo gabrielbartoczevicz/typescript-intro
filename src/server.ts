@@ -1,9 +1,11 @@
 import express from 'express'
 
+import { createCourse } from './routes'
+
 const app = express()
 
-app.get('/', (_, response) => {
-  return response.json({ message: 'Henlo World with Typescript' })
-})
+app.use(express.json())
+
+app.post('/courses', createCourse)
 
 app.listen(3333, () => console.log('Server started at :3333'))
