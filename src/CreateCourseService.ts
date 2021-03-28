@@ -1,14 +1,19 @@
 interface Course {
   id?: string;
   name: string;
-  duration: number;
+  duration?: number;
   educator: string;
 }
 
 export class CreateCourseService {
-  public execute(toCreateCourse: Course): Course {
-    toCreateCourse.id = Date.now().toString()
+  public execute({ name, educator, duration = 2 }: Course): Course {
+    const createdCourse: Course = {
+      id: Date.now().toString(),
+      name,
+      educator,
+      duration,
+    }
 
-    return toCreateCourse
+    return createdCourse
   }
 }

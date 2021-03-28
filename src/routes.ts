@@ -13,5 +13,13 @@ export function createCourse(request: Request, response: Response): Response<any
     educator
   })
 
-  return response.json(course)
+  const anotherCourse = createCourseService.execute({
+    name, 
+    educator
+  })
+
+  return response.json({
+    course, 
+    anotherCourse
+  })
 }
